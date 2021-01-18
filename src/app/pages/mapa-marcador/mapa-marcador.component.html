@@ -1,0 +1,29 @@
+<p>Mapa Marcador</p>
+<agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng" >
+  <agm-marker *ngFor="let markerk of markertList"
+    [latitude]="markerk.Latitud"
+    [longitude]="markerk.Longitud"
+    [iconUrl] ="
+    {
+      url: '../../../assets/Map_marker.svg',
+      scaledSize: {
+          width: 20,
+          height: 30
+      }
+    }"
+    [markerDraggable]="true"
+    
+    (markerClick)="clickedMarker(markerk.Nombre)"
+    
+  >
+  
+  <agm-info-window #infoWindow>
+    <ul>
+      <li>Ciudad es {{ datoCiudad?.name}}</li>
+      <li> Temperatura es {{ datoCiudad?.main.temp-273.15}} c*</li>
+      <li>Velocidad del viento {{datoCiudad?.wind.speed}} m/s</li>
+    </ul>  
+</agm-info-window>
+</agm-marker>
+</agm-map>
+
